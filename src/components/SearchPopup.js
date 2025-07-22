@@ -7,13 +7,14 @@ const SearchPopup = ({onClose}) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [results, setResults] = useState([]);
     const navigate = useNavigate();
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
 
     const handleSearchChange = async (e) => {
         const term = e.target.value;
         setSearchTerm(term);
         if(term) {
             try {
-                const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/class/classrooms/search?term=${encodeURIComponent(term)}`);
+                const res = await fetch(`${API_BASE_URL}/class/classrooms/search?term=${encodeURIComponent(term)}`);
                 if(!res.ok) {
                     throw new Error('Network Response was not ok');
                 }
