@@ -14,6 +14,7 @@ const Signup = () => {
 
     const { login } = useAuth();
     const navigate = useNavigate();
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -23,7 +24,7 @@ const Signup = () => {
         }
         try {
             setLoading(true);
-            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/auth/register`, {
+            const response = await fetch(`${API_BASE_URL}/auth/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -55,7 +56,7 @@ const Signup = () => {
         }
         try {
             setLoading(true);
-            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/auth/sendotp`, {
+            const response = await fetch(`${API_BASE_URL}/auth/sendotp`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
