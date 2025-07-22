@@ -16,10 +16,11 @@ const ProtectedRoute = ({children}) => {
   const { auth, login } = useAuth();
   const [ loading, setLoading ] = useState(true);
   const navigate = useNavigate();
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
   useEffect(() => {
     const checkLoginStatus = async () => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/auth/checklogin`, {
+        const response = await fetch(`${API_BASE_URL}/auth/checklogin`, {
           method: 'GET',
           credentials : 'include',
         });
