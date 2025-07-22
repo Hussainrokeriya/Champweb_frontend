@@ -10,6 +10,7 @@ const Login = () => {
     const { login } = useAuth();
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false); // Loading state for button
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -19,7 +20,7 @@ const Login = () => {
         }
         setLoading(true);
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/auth/login`, {
+            const response = await fetch(`${API_BASE_URL}/auth/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
