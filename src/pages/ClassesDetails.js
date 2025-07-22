@@ -19,10 +19,11 @@ const ClassesDetails = () => {
     const [otpError, setOtpError] = useState('');
 
     const navigate = useNavigate();
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
     const fetchClassDetails = async () => {
         try {
                 setLoading(true);
-                const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/class/getclassbyid/${classid}`, {
+                const response = await fetch(`${API_BASE_URL}/class/getclassbyid/${classid}`, {
                 method: 'GET',
                 credentials: 'include',
             });
@@ -48,7 +49,7 @@ const ClassesDetails = () => {
             const fetchUser = async () => 
             {
                 try {
-                    const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/auth/getuser`, {
+                    const response = await fetch(`${API_BASE_URL}/auth/getuser`, {
                         method: 'GET',
                         credentials: 'include',
                     });
@@ -71,7 +72,7 @@ const ClassesDetails = () => {
     }
     const handleSubmitPost = async () => {
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/class/addpost`, {
+            const response = await fetch(`${API_BASE_URL}/class/addpost`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -103,7 +104,7 @@ const ClassesDetails = () => {
     }
     const handleJoinRequest = async () => {
         try{
-            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/class/request-to-join`, {
+            const response = await fetch(`${API_BASE_URL}/class/request-to-join`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -128,7 +129,7 @@ const ClassesDetails = () => {
     }
     const handleSubmitOtp = async () => {
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/class/verify-otp`, {
+            const response = await fetch(`${API_BASE_URL}/class/verify-otp`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
