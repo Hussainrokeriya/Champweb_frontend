@@ -11,11 +11,12 @@ const ProfilePage = () => {
     const [description, setDescription] = useState('');
     const [classroomsCreatedByMe, setClassroomsCreatedByMe] = useState([]);
     const [classroomsJoinedByMe, setClassroomsJoinedByMe] = useState([]);
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
 
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/auth/getuser`, {
+                const response = await fetch(`${API_BASE_URL}/auth/getuser`, {
                     method: 'GET',
                     credentials: 'include',
                 });
@@ -41,7 +42,7 @@ const ProfilePage = () => {
 
     const fetchClassrooms = async () => {
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/class/classroomscreatedbyme`, {
+            const response = await fetch(`${API_BASE_URL}/class/classroomscreatedbyme`, {
                 method: 'GET',
                 credentials: 'include',
             });
@@ -59,7 +60,7 @@ const ProfilePage = () => {
     }
     const fetchClassroomsJoinedByMe = async () => {
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/class/classroomsforstudent`, {
+            const response = await fetch(`${API_BASE_URL}/class/classroomsforstudent`, {
                 method: 'GET',
                 credentials: 'include',
             });
@@ -86,7 +87,7 @@ const ProfilePage = () => {
 
     const handleCreateClassroom = async () => {
         try {
-            const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/class/create`, {
+            const response = await fetch(`${API_BASE_URL}/class/create`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
